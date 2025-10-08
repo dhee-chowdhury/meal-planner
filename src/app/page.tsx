@@ -1,6 +1,11 @@
-import db from "@/lib/db";
+import { Button } from "@/components/ui/button";
 
-export default async function Home() {
-  const user = await db.user.findFirst();
-  return <div>{JSON.stringify(user, null, 2)}</div>;
+export default function Home() {
+  return (
+    <div>
+      <Button variant="default" size="lg">
+        Hello
+      </Button>
+    </div>
+  );
 }
