@@ -2,8 +2,85 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import * as Collapsible from "@radix-ui/react-collapsible";
-import { ChevronLeft, Menu } from "lucide-react";
+import {
+  Apple,
+  Boxes,
+  ChevronDown,
+  ChevronLeft,
+  Menu,
+  Ruler,
+  Utensils,
+} from "lucide-react";
+import { usePathname } from "next/navigation";
 import { ReactNode, useState } from "react";
+
+type RouteGroupType = {
+  group: string;
+  items: {
+    href: string;
+    label: string;
+    icon: ReactNode;
+  }[];
+};
+
+const ROUTE_GROUPS: RouteGroupType[] = [
+  {
+    group: "Foods Management",
+    items: [
+      {
+        href: "/admin/foods-management/foods",
+        label: "Foods",
+        icon: <Apple className="mr-2 size-3" />,
+      },
+      {
+        href: "/admin/foods-management/categories",
+        label: "Categories",
+        icon: <Boxes className="mr-2 size-3" />,
+      },
+      {
+        href: "/admin/foods-management/serving-units",
+        label: "Serving Units",
+        icon: <Ruler className="mr-2 size-3" />,
+      },
+    ],
+  },
+  {
+    group: "Meals Management",
+    items: [
+      {
+        href: "/client",
+        label: "Meals",
+        icon: <Utensils className="mr-2 size-3" />,
+      },
+    ],
+  },
+];
+
+// Route Group
+type RouteGroupProps = RouteGroupType;
+const RouteGroup = ({ group, items }: RouteGroupProps) => {
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  return (
+    <Collapsible.Root open={open} onOpenChange={setOpen}>
+      <Collapsible.Trigger asChild>
+        <Button
+          className="text-foreground/80 flex w-full justify-between font-normal"
+          variant="ghost"
+        >
+          {group}
+          <div
+            className={`transition-transform ${open ? "rotate-180" : "rotate-0"}`}
+          >
+            <ChevronDown />
+          </div>
+        </Button>
+      </Collapsible.Trigger>
+      <Collapsible.Content forceMount></Collapsible.Content>
+    </Collapsible.Root>
+  );
+};
 
 type DashboardLayoutProps = {
   children: ReactNode;
