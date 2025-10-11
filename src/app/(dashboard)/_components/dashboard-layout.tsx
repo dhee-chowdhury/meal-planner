@@ -124,7 +124,7 @@ type DashboardLayoutProps = {
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className="bg-background fixed z-10 flex h-14 w-screen items-center justify-between border px-2">
+    <div className="bg-background fixed z-10 flex h-13 w-screen items-center justify-between border px-2">
       <Collapsible.Root className="h-full" open={open} onOpenChange={setOpen}>
         <Collapsible.Trigger className="m-2" asChild>
           <Button size="icon" variant="outline">
