@@ -16,8 +16,16 @@ import { usePathname } from "next/navigation";
 import { ReactNode, useState } from "react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 type RouteGroupType = {
   group: string;
@@ -75,9 +83,7 @@ const RouteGroup = ({ group, items }: RouteGroupProps) => {
           variant="ghost"
         >
           {group}
-          <div
-            className={`transition-transform ${open ? "rotate-180" : "rotate-0"}`}
-          >
+          <div className={`transition-transform ${open ? "rotate-180" : "rotate-0"}`}>
             <ChevronDown />
           </div>
         </Button>
@@ -100,10 +106,11 @@ const RouteGroup = ({ group, items }: RouteGroupProps) => {
               asChild
             >
               <Link
-                className={`flex items-center rounded-md px-5 py-1 transition-colors ${pathname === item.href
-                  ? "bg-foreground/10 hover:bg-foreground/5"
-                  : "hover:bg-foreground/10"
-                  }`}
+                className={`flex items-center rounded-md px-5 py-1 transition-colors ${
+                  pathname === item.href
+                    ? "bg-foreground/10 hover:bg-foreground/5"
+                    : "hover:bg-foreground/10"
+                }`}
                 href={item.href}
               >
                 {item.icon}
@@ -133,20 +140,20 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         </Collapsible.Trigger>
       </Collapsible.Root>
       <div className="flex">
-        {/* Theme Toggle */}
+        <ThemeToggle />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex h-9 items-center gap-2 px-2">
               <Avatar className="size-8">
                 <AvatarFallback>A</AvatarFallback>
               </Avatar>
-                <span className="hidden md:inline">Admin</span>
+              <span className="hidden md:inline">Admin</span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuLabel>My Account</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <div className="flex items-center gap-3 px2 py-1.5">
+            <div className="px2 flex items-center gap-3 py-1.5">
               <Avatar className="size-10">
                 <AvatarFallback>A</AvatarFallback>
               </Avatar>
@@ -155,13 +162,18 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
                 <p className="text-muted-foreground text-xs">admin@admin.com</p>
               </div>
             </div>
-            <DropdownMenuSeparator/>
-            <DropdownMenuItem onClick={() => {
-              //logout
-            }} variant="default"><LogOut className="size-4"/>Logout</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              onClick={() => {
+                //logout
+              }}
+              variant="default"
+            >
+              <LogOut className="size-4" />
+              Logout
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
-
       </div>
 
       <Collapsible.Root
@@ -176,11 +188,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
             <div className="flex items-center justify-between">
               <h1 className="font-semibold">Admin Dashboard</h1>
               <Collapsible.Trigger asChild>
-                <Button
-                  className="justify-self-end"
-                  size="icon"
-                  variant="outline"
-                >
+                <Button className="justify-self-end" size="icon" variant="outline">
                   <ChevronLeft />
                 </Button>
               </Collapsible.Trigger>
