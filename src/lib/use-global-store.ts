@@ -32,6 +32,7 @@ const useGlobalStore = createStore<Store>(
       }),
     showAlert: (config) =>
       set((state) => {
+        state.alertOpen = true;
         state.alertConfig = config;
       }),
   }),

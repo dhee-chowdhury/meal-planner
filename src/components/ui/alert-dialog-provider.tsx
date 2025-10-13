@@ -13,21 +13,21 @@ import {
 const AlertDialogProvider = () => {
   const { alertConfig, alertOpen, updateAlertOpen } = useGlobalStore();
 
-  if (!alertConfig) return null;
-
   const handleConfirm = () => {
-    if (alertConfig.onConfirm) {
+    if (alertConfig?.onConfirm) {
       alertConfig.onConfirm();
     }
     updateAlertOpen(false);
   };
 
   const handleCancel = () => {
-    if (alertConfig.onCancel) {
+    if (alertConfig?.onCancel) {
       alertConfig.onCancel();
     }
     updateAlertOpen(false);
   };
+
+  if (!alertConfig) return null;
 
   return (
     <AlertDialog open={alertOpen} onOpenChange={updateAlertOpen}>

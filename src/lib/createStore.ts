@@ -1,4 +1,5 @@
-import { create, StateCreator } from "zustand";
+import { create } from "zustand";
+import { StateCreator } from "zustand/vanilla";
 import { immer } from "zustand/middleware/immer";
 import { persist, createJSONStorage } from "zustand/middleware";
 
