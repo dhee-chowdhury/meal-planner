@@ -6,12 +6,17 @@ import { Edit, Trash } from "lucide-react";
 import { alert } from "@/lib/use-global-store";
 import { useCategoriesStore } from "../_libs/use-category-store";
 import { CategoryCardsSkeleton } from "./category-cards-skeleton";
+import { NoItemsFound } from "@/components/no-items-found";
 
 const CategoryCards = () => {
   const categoriesQuery = useCategories();
   const deleteCategoryMutation = useDeleteCategory();
 
   const { updateSelectedCategoryId, updateCategoryDialogOpen } = useCategoriesStore();
+
+  if (categoriesQuery.data?.length === 0) {
+    return <NoItemsFound name="category" onClick={() => updateCategoryDialogOpen(true)} />;
+  }
 
   return (
     <div className="grid grid-cols-4 gap-2">
