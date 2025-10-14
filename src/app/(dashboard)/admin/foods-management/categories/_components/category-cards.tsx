@@ -4,10 +4,14 @@ import { useDeleteCategory } from "@/app/(dashboard)/admin/foods-management/cate
 import { Button } from "@/components/ui/button";
 import { Edit, Trash } from "lucide-react";
 import { alert } from "@/lib/use-global-store";
+import { useCategoriesStore } from "../_libs/use-category-store";
 
 const CategoryCards = () => {
   const categoriesQuery = useCategories();
   const deleteCategoryMutation = useDeleteCategory();
+
+  const { updateSelectedCategoryId, updateCategoryDialogOpen } = useCategoriesStore();
+
   return (
     <div className="grid grid-cols-4 gap-2">
       {categoriesQuery.data?.map((item) => (
@@ -17,7 +21,15 @@ const CategoryCards = () => {
         >
           <p className="truncate">{item.name}</p>
           <div className="flex gap-1">
-            <Button className="size-6" variant="ghost" size="icon" onClick={() => {}}>
+            <Button
+              className="size-6"
+              variant="ghost"
+              size="icon"
+              onClick={() => {
+                updateSelectedCategoryId(item.id);
+                updateCategoryDialogOpen(true);
+              }}
+            >
               <Edit />
             </Button>
             <Button

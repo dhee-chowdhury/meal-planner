@@ -39,7 +39,6 @@ const ControlledInput = <T extends FieldValues>({
               data-slot="input"
               aria-invalid={!!error}
               className={className}
-              {...rest}
               {...props}
             />
             {!!error && <p className="text-destructive text-sm">{error.message}</p>}

@@ -44,4 +44,4 @@ const useUpdateCategory = () => {
   });
 };
 
-export { useDeleteCategory, createCategory, updateCategory };
+export { useDeleteCategory, useCreateCategory, useUpdateCategory };
