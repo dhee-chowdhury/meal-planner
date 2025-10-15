@@ -12,7 +12,7 @@ type Actions = {
 
 type Store = State & Actions;
 
-const useSrvingUnitStore = createStore<Store>(
+const useServingUnitStore = createStore<Store>(
   (set) => ({
     selectedServingUnitId: null,
     updateSelctedServingUnitId: (id) =>
@@ -29,3 +29,5 @@ const useSrvingUnitStore = createStore<Store>(
     name: "serving-units-store",
   }
 );
+
+export { useServingUnitStore };
