@@ -5,13 +5,7 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
-  return (
-    <DashboardLayout>
-      <h1>Topbar</h1>
-      <h1>Sidebar</h1>
-      {children}
-    </DashboardLayout>
-  );
+  return <DashboardLayout>{children}</DashboardLayout>;
 };
 
 export default Layout;
