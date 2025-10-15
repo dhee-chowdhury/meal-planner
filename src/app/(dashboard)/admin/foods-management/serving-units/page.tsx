@@ -1,5 +1,11 @@
+import { ServingUnitCards } from "./_components/serving-unit-cards";
+
 const ServingUnitsPage = () => {
-  return <div>Serving Units Page</div>;
+  return (
+    <>
+      <ServingUnitCards />
+    </>
+  );
 };
 
 export default ServingUnitsPage;
