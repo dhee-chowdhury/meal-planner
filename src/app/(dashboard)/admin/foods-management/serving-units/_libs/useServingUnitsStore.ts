@@ -6,7 +6,7 @@ type State = {
 };
 
 type Actions = {
-  updateSelctedServingUnitId: (id: State["selectedServingUnitId"]) => void;
+  updateSelectedServingUnitId: (id: State["selectedServingUnitId"]) => void;
   updateServingUnitDialogOpen: (is: State["servingUnitDialogOpen"]) => void;
 };
 
@@ -15,7 +15,7 @@ type Store = State & Actions;
 const useServingUnitStore = createStore<Store>(
   (set) => ({
     selectedServingUnitId: null,
-    updateSelctedServingUnitId: (id) =>
+    updateSelectedServingUnitId: (id) =>
       set((state) => {
         state.selectedServingUnitId = id;
       }),
